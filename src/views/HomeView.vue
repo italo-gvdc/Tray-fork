@@ -34,9 +34,6 @@
     </div>
 </header>
 
-
-
-    
 <section id="hero" class="d-flex align-items-center justify-content-center position-relative" style="height: 100vh; overflow: hidden;">
     <img src="../assets/tenisnovo.jpg" alt="Imagem" class="img-fluid position-absolute w-100 h-100" style="object-fit: cover; z-index: -1;">
     
