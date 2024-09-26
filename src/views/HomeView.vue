@@ -27,7 +27,7 @@
       <img src="../assets/tenisnovo.jpg" alt="Imagem" class="img-fluid position-absolute w-100 h-100" style="object-fit: cover; z-index: -1;">
       <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"></div>
       <div class="container text-center position-relative" data-aos="fade-in" data-aos-delay="200" style="z-index: 1;">
-        <h1 class="hero-title">Sua Loja de Tênis</h1>
+        <h1 class="hero-title">Sua Loja de Tênis Online</h1>
         <h2 class="hero-subtitle">Experiência de compra incrível</h2>
         <a href="/com" class="btn btn-primary btn-lg hero-button">Explore os Produtos</a>
       </div>
