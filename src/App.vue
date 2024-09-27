@@ -6,7 +6,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <template>
   <RouterView />
 </template>
-
+\\testando\\
 <style scoped>
 header {
   line-height: 1.5;
