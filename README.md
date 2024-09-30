@@ -72,6 +72,69 @@ No Nav-bar no canto superior direito, tem um campo escrito "filtre por marca": !
 
 Nossa tela de carrinho ainda esta em "construção" ![Imagem tela carrinho](https://github.com/user-attachments/assets/44abc1d7-ca1d-47ff-bcd9-3be5e22c0bd0). 
 
+## backend
+
+Backend: https://github.com/JuniorLima04/trayprojeto45.git
+
+## Primeiro passo
+(é preciso instalar o visual estudio 2022)
+
+abrindo a arquuivo ![pasta back](https://github.com/user-attachments/assets/9dbacfe5-680c-406e-b442-a6ca42be66a1), dará duplo clique e entrara no visual estudio 2022
+
+## segundo passo
+
+Depois de aberto o arquivo no visual ira aparecer essa tela ![back aberto](https://github.com/user-attachments/assets/3e26a7b5-bda8-4c0c-a060-26a88a8dd32b).
+
+logo em seguida, você ira instalar na sua maquina um MySQL(eu indico MySQL Workbench, que foi o que realizamos o projeto). 
+
+em seguida você ira la no gerenciador de soluções do backend e vai clicar em "trayprojeto45DbContext.cs" como indica na imagem: ![imagem gerenciador de soluções](https://github.com/user-attachments/assets/a31c554d-821e-4969-8271-e847cda35421), 
+
+e ira mudar o password que você colocou quando configurou o MySQL Workbench:![Mudando a senha do seu MySQL](https://github.com/user-attachments/assets/52628406-8e60-45eb-a99f-7dc1f7740d2f) (Colocar a senha que você criou no workbench)
+
+## Terceiro passo
+
+Depois de instalado o MySQL Workbench e totalmente configurado e senha mudada, você ira entrar no backend e ir em "exibir" e abrir o "terminal" ![Abrindo o terminal no visual](https://github.com/user-attachments/assets/170b0bb9-1bfe-44ee-9570-5c7a365c7508).
+
+depois iremos excutar esse comando no terminal para instalar a ferramenta Entity Framework.
+
+```sh
+dotnet tool install --global dotnet-ef
+```
+
+## Quarto passo
+
+Você ira executar o comando a baixo no terminal, que é utilizado para atualizar o banco de dados com a migração mais recente. 
+
+```sh
+dotnet ef database update
+```
+
+## Quinto passo
+
+em seguinda você entrará no local instance no MySQL,que entrará na base de dados: 
+![entrando na base de dados](https://github.com/user-attachments/assets/3c465b9f-c9a6-445e-9be8-9fc6ad9c4e5a)
+
+Em seguida, você ira notar que com o comando "dotnet ef database update" vai subir a base de dados no MySQL: 
+![Captura de tela 2024-09-30 200806](https://github.com/user-attachments/assets/f0308aa1-90bd-4bde-97cc-da197703c15a)
+
+## sexto passo
+
+Depois ira apertar no "https", no visual studio 2022 do backend, que esta marcado nessa imagem: 
+![imagem marcado "https"](https://github.com/user-attachments/assets/ba4cd5a5-f270-4701-a83e-d6a021fe952a). 
+
+Depois de executar o projeto ele ira ficar assim: 
+![imagem depois de execução](https://github.com/user-attachments/assets/0f867a21-5ae8-4d54-8e9a-74376265d307)
+que é um sinal que o backend esta em execução. 
+
+## Setimo passo
+
+Em seguida, você pode entrar no nosso sistema na tela de cadastro e realizar um cadastro que ira bater frontend com backend e ira as informações para o banco de dados:
+![cadastrando um cliente](https://github.com/user-attachments/assets/2a751385-c6c2-4af5-b459-ca6d165d73eb)
+
+![info. Cliente banco de dados](https://github.com/user-attachments/assets/d4696540-cfec-4b49-8aa2-e503934693bf)
+
+Estamos no desenvolvimento do Pop-up para chamar a atenção do cliente e direcionar ele para a tela de cadastro.
+
 ### O que cada desenvolvedor fez.
 
 Os desenvolvedores Leandro Otero de Godoy, RA:1972672 e Valdir Júnior Petrarca de Lima. RA:1969935, são os dois desenvolvedores que estão a frente do projeto. O Leandro passou o projeto de HTML para VUE. começou estruturando o front da tela inicial e do cadastro e auxiliando na estruturação do backend, o valdir foi quem estruturou a tela do produtos, carinho e o linkando front com back do tela de cadastro.
@@ -88,5 +151,4 @@ Miguel Soares da Silva Oliveira - R.A: 1967376
 Moises Júnior Bassiga da Cruz Marques. RA: 1967447.   realizou a parte do back and, alterando alguns códigos pra deixar o site mais limpo e menos poluído pra quando o cliente acessar ficar algo fácil e prático.
 
 Italo Gabriel Vieira da Cruz. 1972431. Foi auxiliando o Moises no backend e realizando o estilos do site.
-
 
