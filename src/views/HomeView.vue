@@ -22,6 +22,7 @@
         </div>
       </div>
     </header>
+
   
     <section id="hero" class="d-flex align-items-center justify-content-center position-relative" style="height: 100vh; overflow: hidden;">
       <img src="../assets/tenisnovo.jpg" alt="Imagem" class="img-fluid position-absolute w-100 h-100" style="object-fit: cover; z-index: -1;">
@@ -30,9 +31,11 @@
         <h1 class="hero-title">Sua Loja de Tênis Online</h1>
         <h2 class="hero-subtitle">Experiência de compra incrível</h2>
         <a href="/com" class="btn btn-primary btn-lg hero-button">Explore os Produtos</a>
+        <h2 class="hero-filtro">Filtre por marca.</h2>
       </div>
     </section>
   
+
     <section id="clients" class="fixed-bottom d-flex" style="background-color: white; padding-top: 5px !important; padding-bottom: 5px !important;">
       <div class="container">
         <div class="row">
@@ -133,6 +136,14 @@
   }
   
   .hero-subtitle {
+    font-size: 2rem;
+    font-weight: 300;
+    color: white;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-filtro {
     font-size: 2rem;
     font-weight: 300;
     color: white;

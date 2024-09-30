@@ -402,7 +402,6 @@ export default {
 
 
 <style scoped>
-/* Header Styles */
 header {
   background-color: #000;
   padding: 15px 20px;
@@ -437,7 +436,6 @@ header {
   background-color: #ff4500;
 }
 
-/* Registration Container Styles */
 .registration-container {
   max-width: 600px;
   margin: 30px auto;
