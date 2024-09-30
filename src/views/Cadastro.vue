@@ -13,7 +13,323 @@
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>
+      </div><template>
+  <div class="container">
+    <header id="header" class="fixed-top d-flex align-items-center">
+      <div class="container">
+        <div class="header-container d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <h1 class="logo-text">SneakerWorld</h1>
+          </div>
+          <nav id="navbar" class="navbar">
+            <ul class="d-flex justify-content-center list-unstyled mb-0">
+              <li class="mx-3">
+                <a class="nav-link highlight" href="/cad">Cadastre-se</a>
+              </li>
+              <li class="mx-3">
+                <a class="nav-link highlight" href="/com">Comprar</a>
+              </li>
+              <li class="mx-3">
+                <a class="nav-link" href="/">Início</a>
+              </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle" style="font-size: 1.5rem; color: #333; cursor: pointer;"></i>
+          </nav>
+        </div>
       </div>
+    </header>
+    
+
+    <div class="registration-container">
+      <h2 class="text-center">Cadastre-se</h2>
+      <form @submit.prevent="submitForm" class="registration-form">
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" v-model="formData.nome" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" v-model="formData.email" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="senha">Senha:</label>
+          <input type="password" id="senha" v-model="formData.senha" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <p v-if="successMessage" class="alert alert-success mt-3">{{ successMessage }}</p>
+        <p v-if="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</p>
+      </form>
+    </div>
+  </div>
+</template>
+
+<script>
+import PessoaService from '@/services/PessoaService';
+
+export default {
+  name: "CadastroPessoa",
+  data() {
+    return {
+      formData: {
+        nome: '',
+        email: '',
+        senha: ''
+      },
+      successMessage: '',
+      errorMessage: ''
+    };
+  },
+  methods: {
+    submitForm() {
+      PessoaService.create(this.formData)
+        .then(response => {
+          this.successMessage = 'Cadastro realizado com sucesso!';
+          this.errorMessage = '';
+          this.resetForm();
+        })
+        .catch(error => {
+          if (error.response && error.response.status === 500) {
+            this.errorMessage = 'Erro no servidor ao realizar o cadastro.';
+          } else if (error.response && error.response.status === 400) {
+            this.errorMessage = 'Erro ao realizar o cadastro. Verifique seus dados.';
+          } else {
+            this.errorMessage = 'Erro ao realizar o cadastro. Tente novamente mais tarde.';
+          }
+          this.successMessage = '';
+        });
+    },
+    resetForm() {
+      this.formData.nome = '';
+      this.formData.email = '';
+      this.formData.senha = '';
+    }
+  }
+};
+</script>
+
+
+<style scoped>
+/* Header Styles */
+.registration-container {
+  width: 100%;
+  max-width: 600px; /* Aumenta a largura máxima do formulário */
+  margin: 50px auto;
+  padding: 30px; /* Aumenta o espaçamento interno */
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.text-center {
+  text-align: center;
+  font-size: 26px; /* Aumenta um pouco o título */
+  color: #333;
+  margin-bottom: 25px; /* Dá mais espaçamento entre o título e o formulário */
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px; /* Aumenta o espaçamento entre os grupos de formulário */
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px; /* Aumenta o preenchimento dos campos */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 18px; /* Aumenta o tamanho da fonte dos campos */
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+.btn {
+  padding: 12px;
+  font-size: 18px; /* Aumenta o tamanho da fonte do botão */
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.alert {
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.mt-3 {
+  margin-top: 1.5rem; 
+}
+
+/* navbar */
+#header {
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  z-index: 999;
+  top: 0;
+  padding: 10px 0;
+  position: relative;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estilo da logo */
+.logo h1 {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+  color: #1fff01;
+  text-transform: uppercase;
+}
+
+.logo-text {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1.5px;
+}
+
+/* Navbar estilos */
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+}
+
+.navbar ul li {
+  position: relative;
+}
+
+.navbar .nav-link {
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  color: #007bff;
+  border-bottom: 2px solid #007bff;
+}
+
+.navbar .highlight {
+  color: #0c0b0b; /* Cor diferenciada para destaque */
+  font-weight: 600;
+}
+
+.navbar .highlight:hover {
+  color: #0c0b0b;
+  border-bottom: 2px solid #ff4500;
+}
+
+/* Toggle para mobile */
+.mobile-nav-toggle {
+  display: none;
+}
+
+/* Estilos para quando em dispositivos móveis */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #fff;
+    width: 100%;
+    max-width: 300px;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .navbar.active {
+    height: 180px;
+  }
+
+  .mobile-nav-toggle {
+    display: inline-block;
+  }
+}
+
+/* Animações suaves */
+.navbar ul li a {
+  position: relative;
+}
+
+.navbar ul li a::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  background-color: #007bff;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.navbar ul li a:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+
+</style>
+
     </header>
     
 
@@ -86,7 +402,6 @@ export default {
 
 
 <style scoped>
-/* Header Styles */
 header {
   background-color: #000;
   padding: 15px 20px;
@@ -121,7 +436,6 @@ header {
   background-color: #ff4500;
 }
 
-/* Registration Container Styles */
 .registration-container {
   max-width: 600px;
   margin: 30px auto;
